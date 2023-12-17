@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            /* Menetapkan tata letak ke dalam kolom */
+            align-items: center;
+            /* Memusatkan elemen secara horizontal */
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 10px;
+            /* Menambahkan margin bawah untuk memberikan ruang antara judul dan teks */
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            text-align: left;
+            /* Memastikan label dan input berada pada sisi kiri */
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Registrasi Akun</h2>
+        <p>Silakan isi formulir di bawah untuk membuat akun baru.</p>
+
+        <form id="registerForm">
+            <label for="fullName">Nama Lengkap:</label>
+            <input type="text" id="fullName" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <label for="newUsername">Username Baru:</label>
+            <input type="text" id="newUsername" required>
+
+            <label for="newPassword">Password Baru:</label>
+            <input type="password" id="newPassword" required>
+
+            <button type="button" onclick="register()">Daftar</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function register() {
+            // Mendapatkan nilai input dari formulir registrasi
+            var fullName = document.getElementById("fullName").value;
+            var email = document.getElementById("email").value;
+            var newUsername = document.getElementById("newUsername").value;
+            var newPassword = document.getElementById("newPassword").value;
+
+            // Logika validasi sederhana, sesuaikan sesuai kebutuhan
+            if (fullName === "" || email === "" || newUsername === "" || newPassword === "") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal Mendaftar',
+                    text: 'Silakan isi semua kolom dengan benar.',
+                });
+            } else {
+                // Logika registrasi, bisa disesuaikan dengan backend atau penyimpanan data yang Anda gunakan
+                // Simpan data pengguna ke database atau penyimpanan data lainnya
+
+                // Menampilkan SweetAlert2
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Registrasi Berhasil!',
+                    text: 'Akun Anda telah berhasil dibuat.',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+
+                // Arahkan pengguna ke halaman login setelah beberapa detik
+                setTimeout(function () {
+                    window.location.href = "index.html";
+                }, 1500);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
